@@ -1,0 +1,46 @@
+
+
+<div class="container-fluid">
+    <div class="bg-white row d-flex justify-content-center align-items-center h-20 w-100 m-0 p-0">
+
+        <div class="col-md-8 col-xs-9 clearfix d-table">
+            <div class="d-table-cell">
+            <img class="img-fluid  logo" src=".../../../../assets/images/pharmsite_logo.png" alt="Italian Trulli">
+            <span class="sub-brand orange-color">
+                Competitve Intelligence (CI) Gateway
+            </span>
+        </div>
+        </div>
+        <div class="col-md-4 col-xs-3 clearfix d-table orange-color pointer">
+                <div class="d-table-cell">
+                <div class="float-right dropdown-toggle mr-3" data-toggle="dropdown"><i class="fa fa-user mr-2"></i>Hi, {{userDetail.name}} </div>
+                <div class="dropdown-menu">
+                        <a class="dropdown-item small-size pointer" [routerLink]="['/login']"><span class="mx-2"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</span></a>
+                      </div>  
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center page-content h-80 w-100 m-0 p-0">
+        <div class="col-12 h-100">
+            <div class="mt-5">
+                <div class=" light bordered rounded">
+                    <app-product-list></app-product-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center page-content h-80 w-100 m-0 p-0">
+        <div class="col-12 h-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <p class="text-white">Lorem Ipsum</p>
+                            <p class="text-white">Lorem Ipsum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

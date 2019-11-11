@@ -1,0 +1,38 @@
+.page-header{
+    background: rgba(229,86,28,0.8);
+    border: none;
+    box-shadow: 0 0 14px -7px;
+    border-bottom: 1px solid white;
+}
+.logo{
+    height: 69px;
+    
+}
+@media(max-width:765px){
+    .logo{
+        height: 30px;
+        
+    }
+}
+.small-size{
+    font-size:70%;
+}
+
+.sub-brand{
+    font-weight: bold;
+    font-size: 90%;
+    transform: translateY(-px)
+   
+}
+.no-space {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.small-size{
+    font-size:70%;
+}
+.f-60{
+    font-size:80%;
+}
+

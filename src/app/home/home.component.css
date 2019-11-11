@@ -1,0 +1,40 @@
+
+.container-fluid{
+    padding: 0;
+    background-color: rgba(228,88,32,0.8);
+}
+.logo{
+    height: 60px;
+    
+}
+.small-size{
+    font-size:70%;
+}
+
+.sub-brand{
+    font-weight: bold;
+    font-size: 90%;
+    transform: translateY(-px)
+   
+}
+
+.page-content {
+ 
+    padding: 0;
+  
+}
+.pointer{
+    cursor: pointer;
+}
+a:active{
+    background-color: #fff;
+}
+.orange-color{
+    color: rgb(228,88,32);
+}
+
+@media (min-width: 768px) {
+    .container-fluid {
+        height: 100vh;
+    }
+}

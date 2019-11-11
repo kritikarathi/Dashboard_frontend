@@ -1,0 +1,165 @@
+.login{
+    width:100%;
+	height: 100vh;
+}
+i{
+	font-size: 15px;
+}
+
+
+.innerText{
+	width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    font-size: 70%;
+	line-height: 0.2;
+
+}
+.modal-header{
+	height: 8vh;
+}
+.modal-title{
+	font-size:90%;
+	font-weight: 900;
+
+}
+input[type=text]{
+    font-size:100%
+}
+
+.createdBy{
+	font-size:60%;
+	color:rgb(146, 141, 141);
+	font-style: italic;
+
+}
+.f-70{
+	font-size:70%
+}
+.btn-primary{
+   border:none;
+   outline: none;
+   font-size:70%;
+}
+.page-content {
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: calc(100vh - 70px);
+    z-index: 0;
+}
+nav{
+    background-color:rgba(229,86,28,0.8);
+	color:white;
+	font-size:70%;
+}
+.bold{
+    font-weight: 800;
+    font-size: 18px
+}
+.titleHeading{
+	font-size:80%;
+	color:rgb(128,128,128);
+	line-height: 1;
+	font-weight: bold
+}
+.light{
+	color:rgb(217, 217, 217);
+	font-size:14px;
+}
+.partition{
+    border-right: 1px solid rgb(214, 207, 207);
+   
+}
+.fa-edit:before{
+	font-size: 120%;
+	color:blue
+
+}
+.fa-pencil:before {
+    content: "\f040";
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.modal-lg{
+	max-width:90%!important;
+}
+li:hover{
+	cursor: pointer;
+	background: #e45a331a;
+}
+
+.navbar{
+    align-items: start;
+}
+
+.scroll{
+    overflow-y:auto;
+    height:100%;
+    overflow-y: scroll;
+    max-height:100%;
+}
+
+
+  
+
+
+h4 {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	opacity: 0.7;
+}
+
+.click {
+	font-size: 20px;
+	color: rgba(0,0,0,.5);
+	cursor: pointer;
+}
+
+span:hover {
+	opacity: 0.8;
+}
+
+
+span:active {
+	transform: scale(0.93,0.93) translateY(2px)
+}
+
+.fa-star-o{
+	color: rgb(184, 148, 5)
+}
+
+
+.fa-star.active{
+	color: #F5CC27 !important;
+}
+
+
+.info {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: grey;
+	position: relative;
+	top: 30px;
+	left: -46px;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+
+.info-tog {
+	color: #F5CC27;
+	position: relative;
+	top: 45px;
+	opacity: 1;
+}
+
+* {
+	transition: all .32s ease;
+}

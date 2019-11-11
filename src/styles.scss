@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+ckeditor .ck-content{
+    overflow: auto;
+    padding: 0 var(--ck-spacing-standard);
+    border: 1px solid var(--ck-color-toolbar-border)!important;
+   margin-top:10px;
+    height: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.ck.ck-editor__editable_inline[dir=ltr] {
+    /* text-align: left; */
+    line-height: 0;
+}
+.ck.ck-toolbar {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    font-size: 5px;
+}
+
+
+.newsTitleContainer{
+	.newsList{
+		.newsEditorContent > {
+			*:not(:first-child){display:none !important;}
+			:first-child{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-bottom:0px;color:rgb(155, 149, 149); font-size:15px}
+		}
+	}
+}
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:20px;
+}
+@media(max-width:769px){
+    html{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size:15px;
+    }
+}

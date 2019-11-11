@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 d-none d-md-block">
+
+            <img src='../../assets/images/ci2.jpg' class="img-fluid bgColor">
+            <div class='firstHalf'></div> 
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="d-flex justify-content-center align-items-center secondHalf">
+                 
+                <form  class="w-50" (ngSubmit)="onSubmit(heroForm.value)" #heroForm="ngForm">
+                    <div class='alert alert-danger p-2'*ngIf="error">
+                        <p class=" w-100 text-center error" >{{error}}</p>
+                    </div>
+                        <div class="form-group my-3">
+                                <label class="orange-text mx-1"><i class="fa fa-user ml-1"></i>
+                                    Username</label>
+                                <input type="text" class="form-control p-2" id="username" name="username" (keyup)="keyup()" ngModel required>
+                        </div>
+                        <div class="form-group my-3">
+                                <label class="orange-text mx-1"><i class="fa fa-lock mx-1"></i>Password</label>
+                                <input type="password" class="form-control p-2" id="password" name="password" (keyup)="keyup()" ngModel required>
+                        </div>
+                        <button type="submit" class="btn  w-100 text-white">LOGIN</button>
+                        <div class="row float-right">
+                            <a [routerLink]="['/login']" class="m-1 ">Forgot Password?</a>
+                            <a [routerLink]="['/login']" class="m-1  ">New User?</a>
+                        </div>
+                           
+                  
+                    
+
+                </form>
+            
+            </div>
+            
+        </div>
+    </div>
+
+</div>

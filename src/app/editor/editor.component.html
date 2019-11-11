@@ -1,0 +1,3 @@
+<!-- <ckeditor id="editor" [editor]="Editor" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic','link','undo', 'redo' ,'bulletedList','numberedList', '|' , 'BlockQuote','ImageUpload','PasteFromOffice'] }"  (ready)="onReady($event)" data="<p>Hello, world!</p>"></ckeditor> -->
+<!-- <div id="editor"></div> -->
+<ckeditor id="editor" name="editor"  [editor]="Editor" [(ngModel)]="data" (ready)="onReady($event)" (blur)="fetchData()"></ckeditor>

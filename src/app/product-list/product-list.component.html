@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="text-center title mb-2 d-table w-100">
+        <span class="bg-white d-table-cell align-middle rounded">Pharmcite Genzyme CI Gateways
+        </span>
+    </div>
+    <div class="row ">
+            <div class="col-sm-4" *ngFor="let therapy of data">
+                    <div class="card shadow  mb-5 bg-white rounded d-table w-100" (click)="therapySelected(therapy)" >
+                      <div class="card-body p-0 d-table-cell align-middle">
+   
+                        <p class="card-text text-center">{{therapy.TherapyName}}</p>
+   
+                      </div>
+                    </div>
+                  </div>
+    </div>
+
+</div>
