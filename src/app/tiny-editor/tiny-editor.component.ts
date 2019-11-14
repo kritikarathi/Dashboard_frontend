@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tiny-editor',
@@ -8,9 +8,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class TinyEditorComponent implements OnInit {
   data="";
   @Output() open: EventEmitter<any> = new EventEmitter();
+  @Input() prefilledValue='';
+  
   constructor() { }
 
   ngOnInit() {
+    this.ngOnChanges();
+  }
+
+  ngOnChanges(){
+    console.log("ON CHANGE",this.prefilledValue)
+    if(this.prefilledValue!=''){
+      this.data=this.prefilledValue;
+     }else{
+       this.data=''
+     }
   }
 
   dataChange(){

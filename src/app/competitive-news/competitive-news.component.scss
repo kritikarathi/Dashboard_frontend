@@ -15,13 +15,14 @@ i{
 	line-height: 0.2;
 
 }
-.modal-header{
-	height: 8vh;
+#myModal{
+	.modal-header{
+		height: 8vh;
+	}
 }
 .modal-title{
 	font-size:90%;
 	font-weight: 900;
-
 }
 input[type=text]{
     font-size:100%
@@ -77,8 +78,7 @@ nav{
 	color:blue
 
 }
-.fa-pencil:before {
-    content: "\f040";
+.fa-pencil, .fa-trash {
     border: 1px solid;
     border-radius: 50%;
     padding: 5px;

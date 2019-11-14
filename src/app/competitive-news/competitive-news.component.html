@@ -76,12 +76,12 @@
             </div>
             <div class="col-lg-4 col-sm-12  col-md-12 newsTitleContainer border-md-right scroll">
                 <!-- <button class="btn-primary  float-right m-3 p-1 rounded" data-toggle="modal" data-target="#myModal">Compose</button> -->
-                <i class="fa fa-edit float-right clearfix my-2" data-toggle="modal" data-target="#myModal"></i>
+                <i class="fa fa-edit float-right clearfix my-2" data-toggle="modal" data-target="#myModal" (click)="prefilled = false"></i>
                 <div class="clearfix"></div>
 
                 <ul class="newsList list-unstyled row" >
                     <li class="border-bottom w-100 p-2 pt-0 m-0 col-12" *ngFor="let new of news; let i = index">
-                        <div class="row no-gutters">
+                        <div class="row no-gutters" (dblclick)="DoubleClick()" id="link">
                             <div class="col-10 mx-3" (click)="heading(new)" >
                                 <div class="titleHeading">{{new.title}}</div>
                                 <div class="newsEditorContent" [innerHtml]='new.body'>
@@ -112,12 +112,17 @@
                         <span class="createdBy  d-table-cell  float-right" *ngIf="newsSelected">Created At: {{newsSelected.createdAt | date:'medium'}}</span>
                     </div>
                 </div>
-                <div class="row">
-
+                <div class="clearfix">
+                    <ul class="list-unstyled mb-1 ml-3 pull-right" *ngIf="newsSelected">
+                        <li class="mt-2">
+                            <i class="fa fa-pencil" (click)="openInEditMode(newsSelected)"></i>
+                        </li>
+                        <li class="mt-2">
+                            <i class="fa fa-trash" (click)="moveToPublish(newsSelected)"></i>
+                        </li>
+                    </ul>
+                    <div [innerHtml]="newsSelected?.body" class="text-small d-inline"></div>
                 </div>
-                <div class="float-right rounded" *ngIf="newsSelected"><i class="fa fa-pencil"></i></div>
-                <div class="clearfix"></div>
-                <div [innerHtml]="newsSelected?.body" class="innerText"></div>
             </div>
         </div>
     </div>
@@ -133,7 +138,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title ">Compose</h4>
-                <button type="button" #closeUpdateUserModal class="close" data-dismiss="modal" >&times;</button>
+                <button type="button" #closeUpdateUserModal class="close" data-dismiss="modal" (click)="prefilled=false">&times;</button>
             </div>
 
             <!-- Modal body -->
@@ -143,17 +148,17 @@
                         <form  #form="ngForm">
                             <div class="form-group f-70">
                                 <label>Title</label>
-                                <input type="text" ngModel class="form-control" id="title" name="title" required>
+                                <input type="text" ngModel class="form-control" id="title" name="title" value="{{prefilled? prefilledData.title:''}}" required>
                             </div>
 
                             <div class="form-group f-70">
                                     <label>Body</label>
-                                   <app-tiny-editor (open)="fetchData($event)"></app-tiny-editor>
+                                   <app-tiny-editor (open)="fetchData($event)" [prefilledValue]="prefilled?prefilledData.body:''"></app-tiny-editor>
                             </div>
 
                             <div class="form-group f-70">
                                 <label>Source</label>
-                                <input type="text" ngModel class="form-control" id="source" name="source">
+                                <input type="text" ngModel class="form-control" id="source" name="source" value="{{prefilled? prefilledData.source:''}}">
                             </div>
                             
                             <div class="text-center">
@@ -166,43 +171,75 @@
                         <form>
                             <label class="mt-2"><strong>Indication</strong> </label>
                             <div class="scroll">
-                                <div *ngFor="let indication of indication">
-                                    <input type="radio" name="indication" value="indication._id" checked="checked"
+                                <div *ngFor="let indication of indication; let idx = index">
+                                    <input type="radio" name="Indication" [value]="indication._id"  [checked]="prefilled? prefilledData?.indication === indication._id : idx === 0" 
                                         (change)="fetchValue(indication,'indication')">
                                     {{indication.IndicationName}}<br>
                                 </div>
                             </div>
                             <label class="mt-2"><strong>Moa</strong> </label>
                             <div class="scroll">
-                                <div *ngFor="let moa of moa">
-                                    <input type="radio" name="moa" value="moa._id" checked="checked"
-                                        (change)="fetchValue(moa,'moa')"> {{moa.MOAName}}<br>
+                                <div *ngFor="let moa of moa;let idx = index">
+                                    <input type="radio" name="Moa" [value]="moa._id"  [checked]="prefilled? prefilledData?.moa === moa._id : idx === 0" 
+                                        (change)="fetchValue(moa,'moa')">{{moa.MOAName}}<br>
                                 </div>
                             </div>
                             <label class="mt-2"><strong>Product</strong> </label>
                             <div class="scroll">
-                                <div *ngFor="let product of product">
-                                    <input type="radio" name="product" value="product._id" checked="checked"
+                                <div *ngFor="let product of product;let idx = index">
+                                    <input type="radio" name="product" [value]="product._id"  [checked]="prefilled? prefilledData?.product === product._id : idx === 0" 
                                         (change)="fetchValue(product,'product')"> {{product.ProductName}}<br>
                                 </div>
                             </div>
                             <label class="mt-2"><strong>Originated Company</strong> </label>
                             <div class="scroll">
-                                <div *ngFor="let company of company">
-                                    <input type="radio" name="company" value="company._id" checked="checked"
+                                <div *ngFor="let company of company;let idx = index">
+                                    <input type="radio" name="company" [value]="company._id"  [checked]="prefilled? prefilledData?.originatedCompany === company._id : idx === 0" 
                                         (change)="fetchValue(company,'Ocompany')"> {{company.CompanyName}}<br>
                                 </div>
                             </div>
                             <label class="mt-2"><strong>Licencee Company</strong> </label>
                             <div class="scroll">
-                                <div *ngFor="let company of company">
-                                    <input type="radio" name="Lcompany" value="company._id" checked="checked"
+                                <div *ngFor="let company of company;let idx = index">
+                                    <input type="radio" name="Lcompany" [value]="company._id" [checked]="prefilled? prefilledData?.licenceeCompany === company._id : idx === 0" 
                                         (change)="fetchValue(company,'Lcompany')"> {{company.CompanyName}}<br>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
+
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="newsModal">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header pb-0">
+                <h4 class="modal-title text-left w-100">
+                    {{newsSelected?.title}}
+                    <div class="row justify-content-between mt-2">
+                        <span class="createdBy col-auto" *ngIf="newsSelected">Created By: {{newsSelected?.CreatedBy.Name}}</span>
+                        <span class="createdBy col-auto" *ngIf="newsSelected">Created At: {{newsSelected?.createdAt | date:'medium'}}</span>
+                    </div>
+                </h4>
+                <button type="button" #closeUpdateUserModal class="close" data-dismiss="modal" >&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="float-right rounded" *ngIf="newsSelected"><i class="fa fa-pencil"></i></div>
+                <div class="clearfix"></div>
+                <div [innerHtml]="newsSelected?.body" class="text-small"></div>
             </div>
 
             <!-- Modal footer -->

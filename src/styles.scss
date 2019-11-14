@@ -24,12 +24,20 @@ ckeditor .ck-content{
     font-size: 5px;
 }
 
+@mixin visibleFirstChildTruncated{
+    *:not(:first-child){display:none !important;}
+    :first-child{
+        overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-bottom:0px;color:rgb(155, 149, 149); font-size:15px;
+    }
+}
 
 .newsTitleContainer{
 	.newsList{
 		.newsEditorContent > {
-			*:not(:first-child){display:none !important;}
-			:first-child{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-bottom:0px;color:rgb(155, 149, 149); font-size:15px}
+            @include visibleFirstChildTruncated();
+            :first-child{
+                @include visibleFirstChildTruncated();
+            }
 		}
 	}
 }

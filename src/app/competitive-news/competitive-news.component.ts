@@ -17,6 +17,8 @@ export class CompetitiveNewsComponent implements OnInit {
   company:any;
   news:any;
   user:any;
+  prefilled=false;
+  prefilledData:any;
   newsSelected:any;
   selectedFields={
     "Moa":'',
@@ -64,7 +66,7 @@ export class CompetitiveNewsComponent implements OnInit {
     //   }, 15)
     // }
   }
- 
+
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
@@ -90,7 +92,7 @@ export class CompetitiveNewsComponent implements OnInit {
     })
     this.http.post('http://localhost:3000/fetchMOAByProduct',data).subscribe((data)=>{
       this.moa = data
-      console.log(this.moa)
+      console.log("MOA===>",this.moa)
       this.obj.moa = this.moa[this.moa.length-1]._id;
 
       })
@@ -148,7 +150,7 @@ export class CompetitiveNewsComponent implements OnInit {
   }
 
   heading(data){
-    this.newsSelected=data
+    this.newsSelected=data;
   }
 
   save(newsForm: NgForm,status){
@@ -157,9 +159,14 @@ export class CompetitiveNewsComponent implements OnInit {
     this.obj.LetterStatus=status;
     this.obj.source = newsForm.value.source;
     console.log(this.obj)
-    this.http.post('http://localhost:3000/addNewLetter',this.obj).subscribe((data)=>{
-      console.log("News Saved", data)
-    })
+    if(this.prefilled){
+           alert('updated')
+    }else{
+      this.http.post('http://localhost:3000/addNewLetter',this.obj).subscribe((data)=>{
+        alert("News Saved")
+      })
+    }
+  
     this.closeUpdateUserModal.nativeElement.click()
   }
   publish(newsForm: NgForm,status){
@@ -173,6 +180,21 @@ export class CompetitiveNewsComponent implements OnInit {
   fetchData(data){
     console.log(data)
     this.obj.body = data
+  }
+
+  DoubleClick(){
+    $('#newsModal').modal('toggle');
+  }
+
+  moveToPublish(){
+    
+  }
+
+  openInEditMode(data){
+    this.prefilled = true;
+    this.prefilledData=data;
+    console.log(data)
+    $('#myModal').modal('toggle');
   }
 
 
