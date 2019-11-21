@@ -29,10 +29,11 @@ export class CompetitiveNewsComponent implements OnInit {
     "Indication": ""
   }
   therapySelected: any;
-  selectedIndication=[];
-  selectedMoa=[];
-  selectedProduct=[];
-  selectedCompany=[];
+  selectedIndication = [];
+  selectedMoa = [];
+  selectedProduct = [];
+  selectedCompany = [];
+  selectedLetterStatus = [];
   obj = {
     user: '',
     title: '',
@@ -102,6 +103,7 @@ export class CompetitiveNewsComponent implements OnInit {
 
 
   selected(filter) {
+    console.log(filter)
     if (filter == "indication") {
       this.selectedIndication = this.indication.filter((item) => item.selected)
     }
@@ -114,7 +116,27 @@ export class CompetitiveNewsComponent implements OnInit {
     if (filter == "company") {
       this.selectedCompany = this.company.filter((item) => item.selected)
     }
-    if ((!this.selectedIndication.length) && (!this.selectedMoa.length) && (!this.selectedProduct.length) && (!this.selectedCompany.length)) {
+    if (filter == "Saved") {
+      this.selectedLetterStatus.push('save')
+    } else if (filter == "unSaved") {
+      var index = this.selectedLetterStatus.indexOf('save');
+      if (index > -1) {
+        this.selectedLetterStatus.splice(index, 1);
+      }
+
+    }
+    if (filter == "Published") {
+      this.selectedLetterStatus.push('publish')
+    } else if (filter == "unPublished") {
+      var index = this.selectedLetterStatus.indexOf('publish');
+      if (index > -1) {
+        this.selectedLetterStatus.splice(index, 1);
+      }
+
+    }
+
+    console.log("LetterStatus", this.selectedLetterStatus)
+    if ((!this.selectedIndication.length) && (!this.selectedMoa.length) && (!this.selectedProduct.length) && (!this.selectedCompany.length) && (!this.selectedLetterStatus.length)) {
       this.fetchNews();
     }
     this.news = this.allNews
@@ -122,6 +144,7 @@ export class CompetitiveNewsComponent implements OnInit {
     this.filter(this.news, this.selectedMoa, 'moa')
     this.filter(this.news, this.selectedProduct, 'product')
     this.filter(this.news, this.selectedCompany, 'company')
+    this.filter(this.news, this.selectedLetterStatus, 'LetterStatus')
   }
 
 
@@ -135,6 +158,10 @@ export class CompetitiveNewsComponent implements OnInit {
             if (item.originatedCompany == element._id || item.licenceeCompany == element._id) {
               return item;
             }
+          } if (column == 'LetterStatus') {
+            if (item[column] == element) {
+              return item;
+            }
           } else {
             if (item[column] == element._id) {
               return item;
@@ -143,7 +170,7 @@ export class CompetitiveNewsComponent implements OnInit {
           }
         });
         if (filteredNews.length > 0) {
-          news.push(filteredNews[0])
+          news.push(...filteredNews)
         }
       });
       this.news = news;
@@ -213,7 +240,7 @@ export class CompetitiveNewsComponent implements OnInit {
     let obj = {
       user: this.user.userId
     }
-    this.http.post('https://api.vrinda-tea.com/deleteNews/' + data._id,obj).subscribe((data)=>{
+    this.http.post('https://api.vrinda-tea.com/deleteNews/' + data._id, obj).subscribe((data) => {
       alert("News Deleted")
       this.fetchNews();
     })
