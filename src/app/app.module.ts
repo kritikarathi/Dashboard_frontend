@@ -36,6 +36,10 @@ import { TinyEditorComponent } from './tiny-editor/tiny-editor.component';
     FormsModule,
     RouterModule.forRoot([
       {
+        path:'',
+        component:LoginComponent
+      },
+      {
         path:'home',
         component:HomeComponent,
         canActivate:[AuthGuardService]
@@ -44,10 +48,7 @@ import { TinyEditorComponent } from './tiny-editor/tiny-editor.component';
         path:'news',
         component:CompetitiveNewsComponent
       },
-      {
-        path:'login',
-        component:LoginComponent
-      },
+ 
       {
         path:'tinyEditor',
         component:TinyEditorComponent

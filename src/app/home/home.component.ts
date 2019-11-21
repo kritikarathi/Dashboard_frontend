@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   @ViewChild('videoPlayer',{static:false}) videoplayer: ElementRef;
-   userDetail={}
+   userDetail:any;
   constructor() { }
 
   ngOnInit() {

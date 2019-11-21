@@ -55,21 +55,21 @@
                                                         value="company.CompanyName" (change)="selected('company')"> {{company.CompanyName}}</li>
                                                 </ul>
                                             </li>
-                                            <li class=" nav-item sidebar-dropdown p-2">
+                                            <!-- <li class=" nav-item sidebar-dropdown p-2">
                                                     <span data-toggle="collapse" class="bold" data-target="#collapseFive"
                                                     aria-expanded="true" aria-controls="collapseFive"><i class="fa fa-plus" aria-hidden="true"></i> Status</span>
                                                     <ul  id="collapseFive" class="collapse " aria-labelledby="headingFive"
                                                             data-parent="#accordionExample">
                                                         <li  class="list-unstyled light" >
-                                                            <input type="checkbox" [id]="Saved"
-                                                            [name]="Saved" [(ngModel)]="isChecked"
+                                                            <input type="checkbox" [id]="save"
+                                                            [name]="save" [(ngModel)]="isChecked"
                                                                 (change)="selected (isChecked?'Saved':'unSaved')">Saved</li>
                                                             <li class="list-unstyled light wrap" >
                                                                 <input type="checkbox" [id]="published" [(ngModel)]="isChecked1"
                                                                 [name]="published"
                                                                 value="published" (change)="selected(isChecked1?'Published':'unPublished')">Published</li>
                                                     </ul>
-                                                </li>
+                                                </li> -->
                     </ul>
 
                 </nav>
@@ -83,8 +83,8 @@
                     <li class="border-bottom w-100 p-2 pt-0 m-0 col-12" *ngFor="let new of news; let i = index">
                         <div class="row no-gutters" (dblclick)="DoubleClick()" id="link">
                             <div class="col-10 mx-3" (click)="heading(new)" >
-                                <div class="titleHeading">{{new.title}}</div>
-                                <div class="newsEditorContent" [innerHtml]='new.body'>
+                                <div class="titleHeading">{{new?.title}}</div>
+                                <div class="newsEditorContent" [innerHtml]='new?.body'>
                                 </div>
                             </div>
                             <div class="col-auto click ml-auto text-right">
@@ -118,7 +118,7 @@
                             <i class="fa fa-pencil" (click)="openInEditMode(newsSelected)"></i>
                         </li>
                         <li class="mt-2">
-                            <i class="fa fa-trash" (click)="moveToPublish(newsSelected)"></i>
+                            <i class="fa fa-trash" (click)="delete(newsSelected)"></i>
                         </li>
                     </ul>
                     <div [innerHtml]="newsSelected?.body" class="text-small d-inline"></div>
@@ -163,7 +163,7 @@
                             
                             <div class="text-center">
                             <button type="button" class="btn btn-success align-center f-70" (click)="save(form,'save')">Save</button>
-                            <button type="button"  class="btn btn-success mx-2 f-70" (click)="publish(form,'publish')">Publish</button>
+                            <button type="button"  class="btn btn-success mx-2 f-70" (click)="save(form,'publish')">Publish</button>
                         </div>
                         </form>
                     </div>
@@ -237,8 +237,8 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="float-right rounded" *ngIf="newsSelected"><i class="fa fa-pencil"></i></div>
-                <div class="clearfix"></div>
+                    <!-- <div class="float-right rounded" *ngIf="newsSelected"><i class="fa fa-pencil"></i></div>
+                    <div class="clearfix"></div> -->
                 <div [innerHtml]="newsSelected?.body" class="text-small"></div>
             </div>
 

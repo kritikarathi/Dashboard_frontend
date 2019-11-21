@@ -12,13 +12,13 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
 
-      this.http.get('http://localhost:3000/fetchALlTherapies').subscribe((data)=>{
+      this.http.get('https://api.vrinda-tea.com/fetchALlTherapies').subscribe((data)=>{
         console.log(data)
         this.data=data;
       })
 
 
-      this.http.get('http://localhost:3000/fetchALlProducts').subscribe((data)=>{
+      this.http.get('https://api.vrinda-tea.com/fetchALlProducts').subscribe((data)=>{
         console.log(data)
      
       })

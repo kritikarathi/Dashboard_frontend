@@ -9,7 +9,6 @@ export class LoginserviceService {
   constructor(private http:HttpClient) { }
 
   fetchUserDetail(user){
-    debugger;
-    return this.http.post('http://localhost:3000/users/login',user)
+    return this.http.post('https://api.vrinda-tea.com/users/login',user)
   }
 }

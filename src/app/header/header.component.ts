@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   userDetail={}
+   userDetail:any;
+   name:any;
   constructor() { }
 
   ngOnInit() {
