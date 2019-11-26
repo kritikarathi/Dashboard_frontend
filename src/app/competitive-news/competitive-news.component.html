@@ -70,6 +70,30 @@
                                                                 value="published" (change)="selected(isChecked1?'Published':'unPublished')">Published</li>
                                                     </ul>
                                                 </li>
+                                                <li class=" nav-item sidebar-dropdown p-2">
+                                                    <span data-toggle="collapse" class="bold" data-target="#collapseSix"
+                                                    aria-expanded="true" aria-controls="collapseSix"><i class="fa fa-plus" aria-hidden="true"></i> Duration</span>
+                                                    <ul  id="collapseSix" class="collapse " aria-labelledby="headingSix"
+                                                            data-parent="#accordionExample">
+                                                            <li  class="list-unstyled light" >
+                                                                <input type="radio" [id]="day"
+                                                                    [name]="day" [checked]="true"
+                                                                    (change)="selected('All')">All Days</li>
+                                                        <li  class="list-unstyled light" >
+                                                            <input type="radio" [id]="day"
+                                                                [name]="day"
+                                                                (change)="selected('Day')">24 Hours</li>
+                                                            <li class="list-unstyled light wrap">
+                                                                <input type="radio" [id]="day"   [name]="day"
+                                                                 (change)="selected('Week')">1 Week</li>
+                                                                <li class="list-unstyled light wrap" >
+                                                                    <input type="radio" [id]="day"  [name]="day"
+                                                                    (change)="selected('Month')">1 Month</li>
+                                                                    <li class="list-unstyled light wrap" >
+                                                                        <input type="radio" [id]="day"  [name]="day"
+                                                                        (change)="selected('Year')">1 Year</li>
+                                                    </ul>
+                                                </li>
                     </ul>
 
                 </nav>

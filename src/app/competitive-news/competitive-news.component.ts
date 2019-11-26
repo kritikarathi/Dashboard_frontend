@@ -30,6 +30,7 @@ export class CompetitiveNewsComponent implements OnInit {
   }
   therapySelected: any;
   selectedIndication = [];
+  selectedDuration=[];
   selectedMoa = [];
   selectedProduct = [];
   selectedCompany = [];
@@ -64,6 +65,10 @@ export class CompetitiveNewsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+
+    let date: Date = new Date();  
+    console.log("Date..", date)
+
     this.therapySelected = JSON.parse(localStorage.getItem('therapySelected'))
     this.user = JSON.parse(localStorage.getItem('user'))
     var data = {
@@ -134,9 +139,16 @@ export class CompetitiveNewsComponent implements OnInit {
       }
 
     }
+    debugger;
+    if (filter == "Day" || filter == "Month" || filter == "Week" || filter == "Year") {
+      this.selectedDuration=[];
+      this.selectedDuration.push(filter)
+    } else if(filter=="All"){
+       this.selectedDuration = [];
+    }
 
     console.log("LetterStatus", this.selectedLetterStatus)
-    if ((!this.selectedIndication.length) && (!this.selectedMoa.length) && (!this.selectedProduct.length) && (!this.selectedCompany.length) && (!this.selectedLetterStatus.length)) {
+    if ((!this.selectedIndication.length) && (!this.selectedMoa.length) && (!this.selectedProduct.length) && (!this.selectedCompany.length) && (!this.selectedLetterStatus.length) && (!this.selectedDuration.length)) {
       this.fetchNews();
     }
     this.news = this.allNews
@@ -145,6 +157,7 @@ export class CompetitiveNewsComponent implements OnInit {
     this.filter(this.news, this.selectedProduct, 'product')
     this.filter(this.news, this.selectedCompany, 'company')
     this.filter(this.news, this.selectedLetterStatus, 'LetterStatus')
+    this.filter(this.news,this.selectedDuration,'updatedAt')
   }
 
 
@@ -158,7 +171,21 @@ export class CompetitiveNewsComponent implements OnInit {
             if (item.originatedCompany == element._id || item.licenceeCompany == element._id) {
               return item;
             }
-          } if (column == 'LetterStatus') {
+          } if(column == 'updatedAt'){
+            var date = new Date();
+            var itemMonth = new Date(item.updatedAt);
+            let days=Math.floor((Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(itemMonth.getFullYear(), itemMonth.getMonth(), itemMonth.getDate()) ) /(1000 * 60 * 60 * 24));
+            if(element=='Day' && days == 1){
+                return item;
+            }else if(element=='Week' && (days >0 && days<=7)){
+              return item;
+            }else if(element=='Month' && (days >0 && days<=30)){
+              return item;
+            }else if(element=='Year' && (days >0 && days<=365)){
+              return item;
+            }
+          }
+          if (column == 'LetterStatus') {
             if (item[column] == element) {
               return item;
             }
@@ -168,7 +195,9 @@ export class CompetitiveNewsComponent implements OnInit {
             }
 
           }
+      
         });
+     debugger;
         if (filteredNews.length > 0) {
           news.push(...filteredNews)
         }
