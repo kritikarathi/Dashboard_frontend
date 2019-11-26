@@ -29,10 +29,12 @@ export class CompetitiveNewsComponent implements OnInit {
     "Indication": ""
   }
   therapySelected: any;
-  selectedIndication=[];
-  selectedMoa=[];
-  selectedProduct=[];
-  selectedCompany=[];
+  selectedIndication = [];
+  selectedDuration=[];
+  selectedMoa = [];
+  selectedProduct = [];
+  selectedCompany = [];
+  selectedLetterStatus = [];
   obj = {
     user: '',
     title: '',
@@ -63,6 +65,10 @@ export class CompetitiveNewsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+
+    let date: Date = new Date();  
+    console.log("Date..", date)
+
     this.therapySelected = JSON.parse(localStorage.getItem('therapySelected'))
     this.user = JSON.parse(localStorage.getItem('user'))
     var data = {
@@ -102,6 +108,7 @@ export class CompetitiveNewsComponent implements OnInit {
 
 
   selected(filter) {
+    console.log(filter)
     if (filter == "indication") {
       this.selectedIndication = this.indication.filter((item) => item.selected)
     }
@@ -114,7 +121,34 @@ export class CompetitiveNewsComponent implements OnInit {
     if (filter == "company") {
       this.selectedCompany = this.company.filter((item) => item.selected)
     }
-    if ((!this.selectedIndication.length) && (!this.selectedMoa.length) && (!this.selectedProduct.length) && (!this.selectedCompany.length)) {
+    if (filter == "Saved") {
+      this.selectedLetterStatus.push('save')
+    } else if (filter == "unSaved") {
+      var index = this.selectedLetterStatus.indexOf('save');
+      if (index > -1) {
+        this.selectedLetterStatus.splice(index, 1);
+      }
+
+    }
+    if (filter == "Published") {
+      this.selectedLetterStatus.push('publish')
+    } else if (filter == "unPublished") {
+      var index = this.selectedLetterStatus.indexOf('publish');
+      if (index > -1) {
+        this.selectedLetterStatus.splice(index, 1);
+      }
+
+    }
+    debugger;
+    if (filter == "Day" || filter == "Month" || filter == "Week" || filter == "Year") {
+      this.selectedDuration=[];
+      this.selectedDuration.push(filter)
+    } else if(filter=="All"){
+       this.selectedDuration = [];
+    }
+
+    console.log("LetterStatus", this.selectedLetterStatus)
+    if ((!this.selectedIndication.length) && (!this.selectedMoa.length) && (!this.selectedProduct.length) && (!this.selectedCompany.length) && (!this.selectedLetterStatus.length) && (!this.selectedDuration.length)) {
       this.fetchNews();
     }
     this.news = this.allNews
@@ -122,6 +156,8 @@ export class CompetitiveNewsComponent implements OnInit {
     this.filter(this.news, this.selectedMoa, 'moa')
     this.filter(this.news, this.selectedProduct, 'product')
     this.filter(this.news, this.selectedCompany, 'company')
+    this.filter(this.news, this.selectedLetterStatus, 'LetterStatus')
+    this.filter(this.news,this.selectedDuration,'updatedAt')
   }
 
 
@@ -135,15 +171,35 @@ export class CompetitiveNewsComponent implements OnInit {
             if (item.originatedCompany == element._id || item.licenceeCompany == element._id) {
               return item;
             }
+          } if(column == 'updatedAt'){
+            var date = new Date();
+            var itemMonth = new Date(item.updatedAt);
+            let days=Math.floor((Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(itemMonth.getFullYear(), itemMonth.getMonth(), itemMonth.getDate()) ) /(1000 * 60 * 60 * 24));
+            if(element=='Day' && days == 1){
+                return item;
+            }else if(element=='Week' && (days >0 && days<=7)){
+              return item;
+            }else if(element=='Month' && (days >0 && days<=30)){
+              return item;
+            }else if(element=='Year' && (days >0 && days<=365)){
+              return item;
+            }
+          }
+          if (column == 'LetterStatus') {
+            if (item[column] == element) {
+              return item;
+            }
           } else {
             if (item[column] == element._id) {
               return item;
             }
 
           }
+      
         });
+     debugger;
         if (filteredNews.length > 0) {
-          news.push(filteredNews[0])
+          news.push(...filteredNews)
         }
       });
       this.news = news;
@@ -213,7 +269,7 @@ export class CompetitiveNewsComponent implements OnInit {
     let obj = {
       user: this.user.userId
     }
-    this.http.post('https://api.vrinda-tea.com/deleteNews/' + data._id,obj).subscribe((data)=>{
+    this.http.post('https://api.vrinda-tea.com/deleteNews/' + data._id, obj).subscribe((data) => {
       alert("News Deleted")
       this.fetchNews();
     })
