@@ -1,0 +1,484 @@
+<div class="landscape">
+        <app-header></app-header>
+        <div class="container-fluid">
+
+                    <h4 class="m-3 landscape-title">Competitive Landscape</h4>
+         
+            <div class="d-flex justify-content-center">
+                    <form>
+                          <div class="form-group">
+                                  <!-- <select class="form-control landscape-dropdown" id="exampleFormControlSelect1">
+                                    <option>Multiple Sclerosis</option>
+                                    <option>Multiple Sclerosis</option>
+                                    <option>Multiple Sclerosis</option>
+                                    <option>Multiple Sclerosis</option>
+                                  </select> -->
+
+                                  <select class="form-control landscape-dropdown" name="indication" id="indication" [(ngModel)]="indicationSelected"  (change)="selectedIndication($event.target.value)">
+                                      <option *ngFor="let indi of indication " [value]="indi._id">{{indi.IndicationName }}</option>
+                                    </select>
+                                </div>
+                    </form>
+              </div>
+              <!-- <div class="row">
+                  <div class="col-12">
+                        <ul class="breadcrumb">
+                                <li><span>Phase I</span></li>
+                                <li><span>Phase II</span></li>
+                                <li><span>Phase III</span></li>
+                                <li><span>Pre-Marketed</span></li>
+                                <li><span>Marketed</span></li>
+                              </ul>
+                  </div>
+             
+              </div> -->
+              <!-- <div class="row m-1 landscape-body flex-nowrap">
+                    <div class="w-20 m-0 p-0">
+                          <ul>
+                                <li class="list-unstyled mt-2">
+                                        <div class="card text-white bg-primary" >
+                                                <div class="card-body">
+                                                  <p class="card-text">
+                                                      Product
+                                                      Company
+                                                      Moa
+                                                  </p>
+                                                </div>
+                                              </div>
+                                </li>
+                                <li class="list-unstyled mt-2">
+                                        <div class="card text-white bg-primary" >
+                                                <div class="card-body">
+                                                  <p class="card-text">
+                                                      Product
+                                                      Company
+                                                      Moa
+                                                  </p>
+                                                </div>
+                                              </div>
+                                </li>
+                                <li class="list-unstyled mt-2">
+                                        <div class="card text-white bg-primary" >
+                                                <div class="card-body">
+                                                  <p class="card-text">
+                                                      Product
+                                                      Company
+                                                      Moa
+                                                  </p>
+                                                </div>
+                                              </div>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="w-20 m-0 p-0">
+                            <ul>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                          </ul>
+                      </div>
+                      <div class="w-20 m-0 p-0">
+                            <ul>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                          </ul>
+                      </div>
+                      <div class="w-20 m-0 p-0">
+                            <ul>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                          </ul>
+                      </div>
+                      <div class="w-20 m-0 p-0">
+                            <ul>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                          </ul>
+                      </div>
+                </div> -->
+
+                <div class="row m-1 landscape-body flex-nowrap" >
+                    <div class="col p-1" *ngFor="let stage of developmentStage" >
+                            <ul class="breadcrumb">
+                                    <li><span>{{stage.stage}}</span></li>
+                                  </ul>
+                                  <div class="m-0 pt-1">
+                                        <ul>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                      </ul>
+                                  </div>
+                    </div>
+                    <!-- <div class="col p-1">
+                            <ul class="breadcrumb">
+                                    <li><span>Phase I</span></li>
+                                  </ul>
+                                  <div class="m-0 pt-1">
+                                        <ul>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                    <div class="card text-white bg-primary" >
+                                                            <div class="card-body">
+                                                              <p class="card-text">
+                                                                  Product
+                                                                  Company
+                                                                  Moa
+                                                              </p>
+                                                            </div>
+                                                          </div>
+                                            </li>
+                                            <li class="list-unstyled mt-2">
+                                                    <div class="card text-white bg-primary" >
+                                                            <div class="card-body">
+                                                              <p class="card-text">
+                                                                  Product
+                                                                  Company
+                                                                  Moa
+                                                              </p>
+                                                            </div>
+                                                          </div>
+                                            </li>
+                                            <li class="list-unstyled mt-2">
+                                                    <div class="card text-white bg-primary" >
+                                                            <div class="card-body">
+                                                              <p class="card-text">
+                                                                  Product
+                                                                  Company
+                                                                  Moa
+                                                              </p>
+                                                            </div>
+                                                          </div>
+                                            </li>
+                                            <li class="list-unstyled mt-2">
+                                                    <div class="card text-white bg-primary" >
+                                                            <div class="card-body">
+                                                              <p class="card-text">
+                                                                  Product
+                                                                  Company
+                                                                  Moa
+                                                              </p>
+                                                            </div>
+                                                          </div>
+                                            </li>
+                                            
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                      </ul>
+                                  </div>
+                    </div>
+                    <div class="col p-1">
+                            <ul class="breadcrumb">
+                                    <li><span>Phase I</span></li>
+                                  </ul>
+                                  <div class="m-0 pt-1">
+                                        <ul>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                      </ul>
+                                  </div>
+                    </div>
+                    <div class="col p-1">
+                            <ul class="breadcrumb">
+                                    <li><span>Phase I</span></li>
+                                  </ul>
+                                  <div class="m-0 pt-1">
+                                        <ul>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                      </ul>
+                                  </div>
+                    </div>
+                    <div class="col p-1">
+                            <ul class="breadcrumb">
+                                    <li><span>Phase I</span></li>
+                                  </ul>
+                                  <div class="m-0 pt-1">
+                                        <ul>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <li class="list-unstyled mt-2">
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                    Product
+                                                                    Company
+                                                                    Moa
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                      </ul>
+                                  </div>
+                    </div> -->
+          
+                    
+        
+                    </div>
+        </div>
+</div>

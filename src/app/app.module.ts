@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './auth-guard.service';
 import { TinyEditorComponent } from './tiny-editor/tiny-editor.component';
+import { LandscapeComponent } from './landscape/landscape.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TinyEditorComponent } from './tiny-editor/tiny-editor.component';
     CompetitiveNewsComponent,
     HeaderComponent,
     LoginComponent,
-    TinyEditorComponent
+    TinyEditorComponent,
+    LandscapeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,10 @@ import { TinyEditorComponent } from './tiny-editor/tiny-editor.component';
       {
         path:'news',
         component:CompetitiveNewsComponent
+      },
+      {
+        path:'landscape',
+        component:LandscapeComponent
       },
  
       {

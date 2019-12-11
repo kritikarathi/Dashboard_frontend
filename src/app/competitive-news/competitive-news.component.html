@@ -12,7 +12,7 @@
                                     aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-plus" aria-hidden="true"></i> Indication</span>
                                     <ul  id="collapseOne" class="collapse" Namearia-labelledby="headingOne"
                                             data-parent="#accordionExample">
-                                        <li  class="list-unstyled light" *ngFor="let indication of indication;let i =index">
+                                        <li  class="list-unstyled light " *ngFor="let indication of indication;let i =index">
                                             <input type="checkbox"   [id]="'indication'+i"
                                             [name]="'indication'+i"
                                             [(ngModel)]="indication.selected"
@@ -24,7 +24,7 @@
                                         aria-expanded="true" aria-controls="collapseTwo"><i class="fa fa-plus" aria-hidden="true"></i> MOA</span>
                                         <ul  id="collapseTwo" class="collapse " aria-labelledby="headingTwo"
                                                 data-parent="#accordionExample">
-                                            <li  class="list-unstyled light" *ngFor="let moa of moa;let i =index">
+                                            <li  class="list-unstyled light " *ngFor="let moa of moa;let i =index">
                                                 <input type="checkbox" [id]="'moa'+i"
                                                 [name]="'moa'+i"
                                                 [(ngModel)]="moa.selected"
@@ -36,7 +36,7 @@
                                             aria-expanded="true" aria-controls="collapseThree"><i class="fa fa-plus" aria-hidden="true"></i> Product</span>
                                             <ul  id="collapseThree" class="collapse " aria-labelledby="headingThree"
                                                     data-parent="#accordionExample">
-                                                <li  class="list-unstyled light" *ngFor="let product of product;let i =index">
+                                                <li  class="list-unstyled light " *ngFor="let product of product;let i =index">
                                                     <input type="checkbox" [id]="'product'+i"
                                                     [name]="'product'+i"
                                                     [(ngModel)]="product.selected"
@@ -48,7 +48,7 @@
                                                 aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-plus" aria-hidden="true"></i> Company</span>
                                                 <ul  id="collapseFour" class="collapse " aria-labelledby="headingFour"
                                                         data-parent="#accordionExample">
-                                                    <li  class="list-unstyled light" *ngFor="let company of company;let i =index">
+                                                    <li  class="list-unstyled light " *ngFor="let company of company;let i =index">
                                                         <input type="checkbox" [id]="'company'+i"
                                                         [name]="'company'+i"
                                                         [(ngModel)]="company.selected"
@@ -60,14 +60,14 @@
                                                     aria-expanded="true" aria-controls="collapseFive"><i class="fa fa-plus" aria-hidden="true"></i> Status</span>
                                                     <ul  id="collapseFive" class="collapse " aria-labelledby="headingFive"
                                                             data-parent="#accordionExample">
-                                                        <li  class="list-unstyled light" >
+                                                        <li  class="list-unstyled light " >
                                                             <input type="checkbox" [id]="save"
                                                             [name]="save" [(ngModel)]="isChecked"
-                                                                (change)="selected (isChecked?'Saved':'unSaved')">Saved</li>
+                                                                (change)="selected (isChecked?'Saved':'unSaved')"> Saved</li>
                                                             <li class="list-unstyled light wrap" >
                                                                 <input type="checkbox" [id]="published" [(ngModel)]="isChecked1"
                                                                 [name]="published"
-                                                                value="published" (change)="selected(isChecked1?'Published':'unPublished')">Published</li>
+                                                                value="published" (change)="selected(isChecked1?'Published':'unPublished')"> Published</li>
                                                     </ul>
                                                 </li>
                                                 <li class=" nav-item sidebar-dropdown p-2">
@@ -78,20 +78,20 @@
                                                             <li  class="list-unstyled light" >
                                                                 <input type="radio" [id]="day"
                                                                     [name]="day" [checked]="true"
-                                                                    (change)="selected('All')">All Days</li>
+                                                                    (change)="selected('All')"> All Days</li>
                                                         <li  class="list-unstyled light" >
                                                             <input type="radio" [id]="day"
                                                                 [name]="day"
-                                                                (change)="selected('Day')">24 Hours</li>
-                                                            <li class="list-unstyled light wrap">
+                                                                (change)="selected('Day')"> 24 Hours</li>
+                                                            <li class="list-unstyled light">
                                                                 <input type="radio" [id]="day"   [name]="day"
-                                                                 (change)="selected('Week')">1 Week</li>
-                                                                <li class="list-unstyled light wrap" >
+                                                                 (change)="selected('Week')"> 1 Week</li>
+                                                                <li class="list-unstyled light " >
                                                                     <input type="radio" [id]="day"  [name]="day"
-                                                                    (change)="selected('Month')">1 Month</li>
-                                                                    <li class="list-unstyled light wrap" >
+                                                                    (change)="selected('Month')"> 1 Month</li>
+                                                                    <li class="list-unstyled light" >
                                                                         <input type="radio" [id]="day"  [name]="day"
-                                                                        (change)="selected('Year')">1 Year</li>
+                                                                        (change)="selected('Year')"> 1 Year</li>
                                                     </ul>
                                                 </li>
                     </ul>

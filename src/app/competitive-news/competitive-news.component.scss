@@ -68,6 +68,8 @@ nav{
 .light{
 	color:rgb(217, 217, 217);
 	font-size:14px;
+	padding: 2px;
+	margin-left: -25px;
 }
 .partition{
     border-right: 1px solid rgb(214, 207, 207);
@@ -93,8 +95,9 @@ li:hover{
 }
 
 .navbar{
-    align-items: start;
+	align-items: start;
 }
+
 
 .scroll{
     overflow-y:auto;
@@ -159,6 +162,8 @@ span:active {
 	top: 45px;
 	opacity: 1;
 }
+
+
 
 * {
 	transition: all .32s ease;

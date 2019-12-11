@@ -139,7 +139,7 @@ export class CompetitiveNewsComponent implements OnInit {
       }
 
     }
-    debugger;
+    
     if (filter == "Day" || filter == "Month" || filter == "Week" || filter == "Year") {
       this.selectedDuration=[];
       this.selectedDuration.push(filter)
@@ -205,6 +205,7 @@ export class CompetitiveNewsComponent implements OnInit {
       this.news = news;
       this.news = [...new Set(this.news)]
     }
+    this.newsSelected = '';
   }
 
   fetchValue(data, title) {

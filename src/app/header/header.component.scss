@@ -36,3 +36,14 @@
     font-size:80%;
 }
 
+.nav-link{
+    font-size: 18px;
+    border-right: 1px solid rgb(223, 221, 221);
+    &.active-link { border: 1px solid rgba(229,86,28,0.8);
+        color:rgba(229,86,28,0.8);
+    }
+}
+
+
+
+
