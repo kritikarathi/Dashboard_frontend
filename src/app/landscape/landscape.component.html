@@ -226,8 +226,17 @@
                                     <li><span>{{stage.stage}}</span></li>
                                   </ul>
                                   <div class="m-0 pt-1">
-                                        <ul>
-                                              <li class="list-unstyled mt-2">
+                                        <ul *ngFor='let data of landscapeData'>
+                                              <li class="list-unstyled mt-2" *ngIf='data.developmentStage == stage.stage'>
+                                                      <div class="card text-white bg-primary" >
+                                                              <div class="card-body">
+                                                                <p class="card-text">
+                                                                 {{data.product.ProductName}}
+                                                                </p>
+                                                              </div>
+                                                            </div>
+                                              </li>
+                                              <!-- <li class="list-unstyled mt-2">
                                                       <div class="card text-white bg-primary" >
                                                               <div class="card-body">
                                                                 <p class="card-text">
@@ -248,18 +257,7 @@
                                                                 </p>
                                                               </div>
                                                             </div>
-                                              </li>
-                                              <li class="list-unstyled mt-2">
-                                                      <div class="card text-white bg-primary" >
-                                                              <div class="card-body">
-                                                                <p class="card-text">
-                                                                    Product
-                                                                    Company
-                                                                    Moa
-                                                                </p>
-                                                              </div>
-                                                            </div>
-                                              </li>
+                                              </li> -->
                                       </ul>
                                   </div>
                     </div>
