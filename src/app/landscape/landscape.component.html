@@ -222,45 +222,48 @@
 
                 <div class="row m-1 landscape-body flex-nowrap" >
                     <div class="col p-1" *ngFor="let stage of developmentStage" >
-                            <ul class="breadcrumb">
-                                    <li><span>{{stage.stage}}</span></li>
-                                  </ul>
-                                  <div class="m-0 pt-1">
-                                        <ul *ngFor='let data of landscapeData'>
-                                              <li class="list-unstyled mt-2" *ngIf='data.developmentStage == stage.stage'>
-                                                      <div class="card text-white bg-primary" >
-                                                              <div class="card-body">
-                                                                <p class="card-text">
-                                                                 {{data.product.ProductName}}
-                                                                </p>
-                                                              </div>
-                                                            </div>
-                                              </li>
-                                              <!-- <li class="list-unstyled mt-2">
-                                                      <div class="card text-white bg-primary" >
-                                                              <div class="card-body">
-                                                                <p class="card-text">
-                                                                    Product
-                                                                    Company
-                                                                    Moa
-                                                                </p>
-                                                              </div>
-                                                            </div>
-                                              </li>
-                                              <li class="list-unstyled mt-2">
-                                                      <div class="card text-white bg-primary" >
-                                                              <div class="card-body">
-                                                                <p class="card-text">
-                                                                    Product
-                                                                    Company
-                                                                    Moa
-                                                                </p>
-                                                              </div>
-                                                            </div>
-                                              </li> -->
-                                      </ul>
-                                  </div>
+                        <ul class="breadcrumb">
+                          <li><span>{{stage.stage}}</span></li>
+                        </ul>
+                        <div class="m-0 pt-1">
+                              <ul *ngFor='let data of landscapeData'>
+                                    <li class="list-unstyled mt-2" *ngIf='data.developmentStage == stage.stage'>
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body text-center">
+                                                      <p class="card-text">
+                                                        {{data.product.ProductName}}<br/>
+                                                        {{data.moa.MOAName}}<br/>
+                                                        {{data.company.CompanyName}}
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <!-- <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li>
+                                    <li class="list-unstyled mt-2">
+                                            <div class="card text-white bg-primary" >
+                                                    <div class="card-body">
+                                                      <p class="card-text">
+                                                          Product
+                                                          Company
+                                                          Moa
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                    </li> -->
+                            </ul>
+                        </div>
                     </div>
+               
                     <!-- <div class="col p-1">
                             <ul class="breadcrumb">
                                     <li><span>Phase I</span></li>
