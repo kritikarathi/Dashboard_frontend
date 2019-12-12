@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { element } from 'protractor';
+
 
 
 @Component({
@@ -74,6 +74,13 @@ export class LandscapeComponent implements OnInit {
     }
   ]
   developmentStage = [];
+  filterByStage=true;
+  filterByMoa=false;
+  filterByCompany = false;
+
+  moa=[];
+  company=[];
+  filterSelected='Filter By Phase';
   constructor(private http: HttpClient) {
   }
 
@@ -99,11 +106,16 @@ export class LandscapeComponent implements OnInit {
       console.log('data', data)
       this.landscapeData = data;
       this.developmentStage = [];
+      this.moa=[];
+      this.company=[];
       this.landscapeData.forEach(element => {
         this.developmentStage.push(element.developmentStage)
-
+        this.moa.push(element.moa.MOAName)
+        this.company.push(element.company.CompanyName)
       });
       this.developmentStage = [...new Set(this.developmentStage)]
+      this.moa = [...new Set(this.moa)]
+      this.company = [...new Set(this.company)]
       console.log(this.developmentStage)
 
       let array1 = [];
@@ -131,6 +143,28 @@ export class LandscapeComponent implements OnInit {
   selectedIndication(indication) {
     this.indicationSelected = indication;
     this.filterByPhase();
+  }
+
+  selectedFilter(filter){
+    this.filterSelected = filter
+    console.log(filter)
+    if(this.filterSelected=="Filter By Phase"){
+        this.filterByStage = true;
+        this.filterByMoa = false;
+        this.filterByCompany = false;
+   
+    }else if(this.filterSelected == "Filter By MOA"){
+        this.filterByStage = false;
+        this.filterByMoa = true;
+        this.filterByCompany = false;
+    }else if(this.filterSelected == "Filter By Company"){
+        this.filterByStage = false;
+        this.filterByMoa = false;
+        this.filterByCompany = true;
+    }
+
+    this.filterByPhase();
+
   }
 
 
